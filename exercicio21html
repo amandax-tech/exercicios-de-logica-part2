@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Formas de Pagamento</title>
+</head>
+<body>
+  <h2>Formas de Pagamento</h2>
+
+  <label for="preco">Preço do produto (R$): </label>
+  <input type="number" id="preco" step="0.01"><br><br>
+
+  <label for="opcao">Opção de pagamento: </label>
+  <select id="opcao">
+    <option value="1">À vista (10% de desconto)</option>
+    <option value="2">2x no cartão (preço normal)</option>
+    <option value="3">3x ou mais (20% de juros)</option>
+  </select><br><br>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function calcular() {
+      let preco = parseFloat(document.getElementById("preco").value);
+      let opcao = parseInt(document.getElementById("opcao").value);
+      let valorFinal = 0;
+
+      if (opcao === 1) {
+        valorFinal = preco * 0.9; // 10% desconto
+      } else if (opcao === 2) {
+        valorFinal = preco; // preço normal
+      } else if (opcao === 3) {
+        valorFinal = preco * 1.2; // 20% juros
+      }
+
+      document.getElementById("resultado").innerHTML =
+        "Valor final: R$ " + valorFinal.toFixed(2);
+    }
+  </script>
+</body>
+</html>

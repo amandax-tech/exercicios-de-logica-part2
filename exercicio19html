@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Situação de Votação</title>
+</head>
+<body>
+  <h2>Situação de Votação</h2>
+
+  <label for="idade">Informe sua idade: </label>
+  <input type="number" id="idade"><br><br>
+
+  <button onclick="verificar()">Verificar</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function verificar() {
+      let idade = parseInt(document.getElementById("idade").value);
+      let situacao = "";
+
+      if (idade < 16) {
+        situacao = "Não votante";
+      } else if (idade >= 16 && idade < 18) {
+        situacao = "Voto opcional";
+      } else if (idade >= 18 && idade <= 70) {
+        situacao = "Voto obrigatório";
+      } else {
+        situacao = "Voto opcional";
+      }
+
+      document.getElementById("resultado").innerHTML =
+        "Situação: " + situacao;
+    }
+  </script>
+</body>
+</html>

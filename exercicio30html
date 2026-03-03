@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Empréstimo Bancário</title>
+</head>
+<body>
+  <h2>Empréstimo Bancário</h2>
+
+  <label for="valorCasa">Valor da casa (R$): </label>
+  <input type="number" id="valorCasa" step="0.01"><br><br>
+
+  <label for="salario">Salário do comprador (R$): </label>
+  <input type="number" id="salario" step="0.01"><br><br>
+
+  <label for="anos">Anos para pagar: </label>
+  <input type="number" id="anos"><br><br>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function calcular() {
+      let valorCasa = parseFloat(document.getElementById("valorCasa").value);
+      let salario = parseFloat(document.getElementById("salario").value);
+      let anos = parseInt(document.getElementById("anos").value);
+
+      let prestacaoMensal = valorCasa / (anos * 12);
+      let limite = salario * 0.3;
+      let mensagem = "A prestação mensal será de R$ " + prestacaoMensal.toFixed(2) + "<br>";
+
+      if (prestacaoMensal <= limite) {
+        mensagem += "Empréstimo APROVADO!";
+      } else {
+        mensagem += "Empréstimo NEGADO!";
+      }
+
+      document.getElementById("resultado").innerHTML = mensagem;
+    }
+  </script>
+</body>
+</html>

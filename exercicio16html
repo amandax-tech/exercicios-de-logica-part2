@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Desconto</title>
+</head>
+<body>
+  <h2>Calculadora de Desconto</h2>
+
+  <label for="preco">Preço do produto (R$): </label>
+  <input type="number" id="preco" step="0.01"><br><br>
+
+  <label for="desconto">Porcentagem de desconto (%): </label>
+  <input type="number" id="desconto" step="0.01"><br><br>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function calcular() {
+      let preco = parseFloat(document.getElementById("preco").value);
+      let desconto = parseFloat(document.getElementById("desconto").value);
+
+      let valorDesconto = preco * (desconto / 100);
+      let precoFinal = preco - valorDesconto;
+
+      document.getElementById("resultado").innerHTML =
+        "Valor do desconto: R$ " + valorDesconto.toFixed(2) + "<br>" +
+        "Preço final: R$ " + precoFinal.toFixed(2);
+    }
+  </script>
+</body>
+</html>

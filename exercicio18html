@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Aluguel de Carro</title>
+</head>
+<body>
+  <h2>Aluguel de Carro</h2>
+
+  <label for="dias">Quantidade de dias: </label>
+  <input type="number" id="dias"><br><br>
+
+  <label for="km">Quantidade de Km rodados: </label>
+  <input type="number" id="km" step="0.1"><br><br>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <h3>Resultado:</h3>
+  <p id="resultado"></p>
+
+  <script>
+    function calcular() {
+      let dias = parseInt(document.getElementById("dias").value);
+      let km = parseFloat(document.getElementById("km").value);
+
+      let precoDias = dias * 60;
+      let precoKm = km * 0.15;
+      let total = precoDias + precoKm;
+
+      document.getElementById("resultado").innerHTML =
+        "O preço total a pagar é: R$ " + total.toFixed(2);
+    }
+  </script>
+</body>
+</html>
